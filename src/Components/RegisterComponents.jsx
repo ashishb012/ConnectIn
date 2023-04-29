@@ -1,31 +1,38 @@
 import React, { useState } from "react";
-import { LoginAPI } from "../api/AuthApi";
+import { RegisterAPI } from "../api/AuthApi";
 import "../Sass/LoginComponent.scss";
 import { useNavigate } from "react-router-dom";
 import LinkedinLogo from "../assets/LinkedinLogo.png";
 import { toast } from "react-toastify";
 
-export default function LoginComponents() {
+export default function RegisterComponents() {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({});
-  const login = async () => {
+  const register = async () => {
     try {
-      let res = await LoginAPI(credentials.email, credentials.password);
-      toast.success("Signed In to LinkedIn");
+      let res = await RegisterAPI(credentials.email, credentials.password);
+      toast.success("LinkedIn Account Created");
       localStorage.setItem("userEmail", res.user.email);
       navigate("/home");
     } catch (e) {
       console.log(e);
-      toast.error("Invalid credentials");
+      toast.error("There was some problem creating your Account");
     }
   };
   return (
     <div className="login-wrapper">
       <img src={LinkedinLogo} alt="LinkedIn Logo" className="linkedinLogo" />
       <div className="login-wrapper-inner ">
-        <h1 className="heading">Sign in</h1>
-        <p className="sub-heading">Stay updated on your professional world</p>
+        <h1 className="heading">Make the most of your professional life</h1>
         <div className="auth-inputs">
+          <input
+            onChange={(event) => {
+              setCredentials({ ...credentials, name: event.target.value });
+            }}
+            className="common-input"
+            placeholder="Your Name"
+            type="text"
+          />
           <input
             onChange={(event) => {
               setCredentials({ ...credentials, email: event.target.value });
@@ -39,21 +46,21 @@ export default function LoginComponents() {
               setCredentials({ ...credentials, password: event.target.value });
             }}
             className="common-input"
-            placeholder="Password"
+            placeholder="Password (6 or more characters)"
             type="password"
           />
         </div>
-        <button className="login-btn" onClick={login}>
-          Sign in
+        <button className="login-btn" onClick={register}>
+          Agree & Join
         </button>
       </div>
       <hr className="hr-text" data-content="or" />
       {/* Todo */}
       <div className="google-btn-container">
         <p className="go-to-signup">
-          New to LinkedIn?{" "}
-          <span className="join-now" onClick={() => navigate("/register")}>
-            Join now
+          Already on LinkedIn?{" "}
+          <span className="join-now" onClick={() => navigate("/")}>
+            Sign in
           </span>
         </p>
       </div>
