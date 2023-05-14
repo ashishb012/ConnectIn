@@ -1,6 +1,6 @@
 import React from "react";
-import RegisterComponents from "../Components/RegisterComponents";
+import RegisterComponent from "../components/RegisterComponent";
 
 export default function Register() {
-  return <RegisterComponents />;
+  return <RegisterComponent />;
 }

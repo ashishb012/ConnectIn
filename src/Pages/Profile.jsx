@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import HomeComponent from "../components/HomeComponent";
+import ProfileComponent from "../components/ProfileComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import Loader from "../components/common/Loader";
 
-export default function Home({ currentUser }) {
+export default function Profile({ currentUser }) {
   const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
   useEffect(() => {
@@ -17,5 +17,5 @@ export default function Home({ currentUser }) {
       }
     });
   }, []);
-  return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
+  return loading ? <Loader /> : <ProfileComponent currentUser={currentUser} />;
 }

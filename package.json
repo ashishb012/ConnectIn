@@ -10,15 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd": "^5.4.6",
     "firebase": "^9.21.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
     "react-toastify": "^9.1.2",
     "sass": "^1.62.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "firebase-tools": "^11.24.0",
+    "moment": "^2.29.4",
+    "quill-emoji": "^0.2.0",
+    "react-google-button": "^0.7.2",
+    "react-quill": "^2.0.0",
+    "react-uuid": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

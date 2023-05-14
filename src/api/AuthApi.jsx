@@ -15,6 +15,7 @@ export const LoginAPI = (email, password) => {
     return err;
   }
 };
+
 export const RegisterAPI = (email, password) => {
   try {
     let response = createUserWithEmailAndPassword(auth, email, password);
@@ -23,17 +24,16 @@ export const RegisterAPI = (email, password) => {
     return err;
   }
 };
-//  TODO
-//
-//  export const GoogleSignInAPI = (email, password) => {
-//   try {
-//     let googleProvider = new GoogleAuthProvider();
-//     let response = signInWithPopup(auth, googleProvider);
-//     return response;
-//   } catch (err) {
-//     return err;
-//   }
-// };
+
+export const GoogleSignInAPI = () => {
+  try {
+    let googleProvider = new GoogleAuthProvider();
+    let res = signInWithPopup(auth, googleProvider);
+    return res;
+  } catch (err) {
+    return err;
+  }
+};
 
 export const onLogout = () => {
   try {
