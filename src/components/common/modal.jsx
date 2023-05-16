@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, Progress } from "antd";
 import { AiOutlinePicture } from "react-icons/ai";
 import ReactQuill from "react-quill";
-import "./index.scss";
+import "./modal.scss";
 
 const ModalComponent = ({
   modalOpen,
@@ -73,7 +73,7 @@ const ModalComponent = ({
             <></>
           )}
         </div>
-        <label for="pic-upload">
+        <label htmlFor="pic-upload">
           <AiOutlinePicture size={35} className="picture-icon" />
         </label>
         <input

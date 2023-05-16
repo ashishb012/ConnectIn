@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import "./index.scss";
+import "./searchUsers.scss";
 
 export default function SearchUsers({ setIsSearch, setSearchInput }) {
   return (

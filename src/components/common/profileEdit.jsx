@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { editProfile } from "../../../api/FirestoreAPI";
-import "./index.scss";
+import { editProfile } from "../../api/FirestoreAPI";
+import "./profileEdit.scss";
 
 export default function ProfileEdit({ onEdit, currentUser }) {
   const [editInputs, setEditInputs] = useState(currentUser);

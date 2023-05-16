@@ -19,7 +19,7 @@ export default function RegisterComponent() {
         name: credentails.name,
         email: credentails.email,
         imageLink:
-          "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+          "https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg",
       });
       navigate("/home");
       localStorage.setItem("userEmail", res.user.email);
@@ -66,7 +66,7 @@ export default function RegisterComponent() {
           Agree & Join
         </button>
       </div>
-      <hr class="hr-text" data-content="or" />
+      <hr className="hr-text" data-content="or" />
       <div className="google-btn-container">
         <p className="go-to-signup">
           Already on LinkedIn?{" "}

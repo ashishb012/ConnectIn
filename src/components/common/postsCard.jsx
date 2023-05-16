@@ -7,9 +7,9 @@ import {
   getAllUsers,
   deletePost,
   getConnections,
-} from "../../../api/FirestoreAPI";
-import LikeButton from "../LikeButton";
-import "./index.scss";
+} from "../../api/FirestoreAPI";
+import LikeButton from "./likeButton";
+import "./postsCard.scss";
 
 export default function PostsCard({ posts, id, getEditData }) {
   let navigate = useNavigate();

@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
-import { postStatus, getStatus, updatePost } from "../../../api/FirestoreAPI";
-import { getCurrentTimeStamp } from "../../../helpers/useMoment";
-import ModalComponent from "../Modal";
-import { uploadPostImage } from "../../../api/ImageUpload";
-import { getUniqueID } from "../../../helpers/getUniqueId";
-import PostsCard from "../PostsCard";
-import "./index.scss";
+import { postStatus, getStatus, updatePost } from "../../api/FirestoreAPI";
+import { getCurrentTimeStamp } from "../../helpers/useMoment";
+import ModalComponent from "./Modal";
+import { uploadPostImage } from "../../api/ImageUpload";
+import { getUniqueID } from "../../helpers/getUniqueId";
+import PostsCard from "./PostsCard";
+import "./postUpdate.scss";
 
 export default function PostStatus({ currentUser }) {
   const [modalOpen, setModalOpen] = useState(false);

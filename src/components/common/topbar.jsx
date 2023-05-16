@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import LinkedinLogo from "../../../assets/linkedinLogo.png";
-import user from "../../../assets/user.png";
-import SearchUsers from "../SearchUsers";
+import LinkedinLogo from "../../assets/linkedinLogo.png";
+import user from "../../assets/user.png";
+import SearchUsers from "./searchUsers";
 import {
   AiOutlineHome,
   AiOutlineUserSwitch,
@@ -11,9 +11,9 @@ import {
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { BsBriefcase } from "react-icons/bs";
-import { getAllUsers } from "../../../api/FirestoreAPI";
-import ProfilePopup from "../ProfilePopup";
-import "./index.scss";
+import { getAllUsers } from "../../api/FirestoreAPI";
+import ProfilePopup from "./profilePopup";
+import "./topbar.scss";
 
 export default function Topbar({ currentUser }) {
   const [popupVisible, setPopupVisible] = useState(false);

@@ -1,3 +1,7 @@
+//
+// TODO change cloud firestore from Public to Private
+//
+
 import { firestore } from "../firebaseConfig";
 import {
   addDoc,

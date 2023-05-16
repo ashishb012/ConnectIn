@@ -22,7 +22,7 @@ export const uploadImage = (
       setProgress(progress);
     },
     (error) => {
-      console.error(err);
+      console.error(error);
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((response) => {
@@ -49,7 +49,7 @@ export const uploadPostImage = (file, setPostImage, setProgress) => {
       setProgress(progress);
     },
     (error) => {
-      console.error(err);
+      console.error(error);
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((response) => {
