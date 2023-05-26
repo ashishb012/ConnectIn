@@ -66,7 +66,7 @@ export default function Topbar({ currentUser }) {
     getAllUsers(setUsers);
   }, []);
   return (
-    <div className="topbar-main">
+    <div className="topbar-main z-0">
       {popupVisible ? (
         <div className="popup-position">
           <ProfilePopup />
@@ -113,12 +113,12 @@ export default function Topbar({ currentUser }) {
       {searchInput.length === 0 ? (
         <></>
       ) : (
-        <div className="search-results">
+        <div className="search-results z-auto">
           {filteredUsers.length === 0 ? (
             <div className="search-inner">No Results Found..</div>
           ) : (
             filteredUsers.map((user) => (
-              <div className="search-inner" onClick={() => openUser(user)}>
+              <div className="search-inner  " onClick={() => openUser(user)}>
                 <img src={user.imageLink} />
                 <p className="name">{user.name}</p>
               </div>
