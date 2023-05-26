@@ -4,7 +4,6 @@ import { postUserData } from "../api/FirestoreAPI";
 import LinkedinLogo from "../assets/linkedinLogo.png";
 import { useNavigate } from "react-router-dom";
 import { getUniqueID } from "../helpers/getUniqueId";
-import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
 
 export default function RegisterComponent() {
@@ -30,50 +29,69 @@ export default function RegisterComponent() {
   };
 
   return (
-    <div className="login-wrapper">
-      <img src={LinkedinLogo} className="linkedinLogo" />
-
-      <div className="login-wrapper-inner">
-        <h1 className="heading">Make the most of your professional life</h1>
-
-        <div className="auth-inputs">
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentails, name: event.target.value })
-            }
-            type="text"
-            className="common-input"
-            placeholder="Your Name"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentails, email: event.target.value })
-            }
-            type="email"
-            className="common-input"
-            placeholder="Email or phone number"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentails, password: event.target.value })
-            }
-            type="password"
-            className="common-input"
-            placeholder="Password (6 or more characters)"
-          />
+    <div className="bg-neutral-100">
+      <img src={LinkedinLogo} className="w-32 pt-2 pl-10" />
+      <div className="flex justify-center items-center h-screen">
+        <div className=" bg-white max-w-md w-full p-6 rounded-lg shadow-xl">
+          <h1 className="text-3xl font-semibold my-3 ">Join LinkedIn</h1>
+          <div className="my-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Name
+            </label>
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentails, name: event.target.value })
+              }
+              type="text"
+              className="border rounded w-full text-gray-700 p-3 focus:outline-gray-900 focus-within:shadow-lg"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Email
+            </label>
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentails, email: event.target.value })
+              }
+              type="email"
+              className="border rounded w-full text-gray-700 p-3 focus:outline-gray-900 focus-within:shadow-lg"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Password (6+ characters)
+            </label>
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentails, password: event.target.value })
+              }
+              type="password"
+              className="border rounded w-full text-gray-700 p-3 focus:outline-gray-900 focus-within:shadow-lg"
+            />
+          </div>
+          <div className="text-center py-6 ">
+            <button
+              onClick={register}
+              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-32 rounded-full focus:outline-none focus:shadow-outline"
+            >
+              Agree & Join
+            </button>
+          </div>
+          <p className="text-center">OR</p>
+          {/* TODO: Google */}
+          <div className=" my-4">
+            <p className="text-center ">
+              Already on LinkedIn? &nbsp;
+              <span
+                className=" text-blue-600 font-semibold hover:cursor-pointer hover:underline"
+                onClick={() => navigate("/")}
+              >
+                Sign in
+              </span>
+            </p>
+          </div>
         </div>
-        <button onClick={register} className="login-btn">
-          Agree & Join
-        </button>
-      </div>
-      <hr className="hr-text" data-content="or" />
-      <div className="google-btn-container">
-        <p className="go-to-signup">
-          Already on LinkedIn?{" "}
-          <span className="join-now" onClick={() => navigate("/")}>
-            Sign in
-          </span>
-        </p>
       </div>
     </div>
   );

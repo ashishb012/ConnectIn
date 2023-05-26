@@ -1,3 +1,4 @@
+// Add firebaseConfig from your firebase account to the file firebaseConfigKeys.js
 import { firebaseConfigKeys } from "./firebaseConfigKeys";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
