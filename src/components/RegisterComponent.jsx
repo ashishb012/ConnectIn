@@ -30,9 +30,9 @@ export default function RegisterComponent() {
 
   return (
     <div className="bg-neutral-100">
-      <img src={LinkedinLogo} className="w-32 pt-2 pl-10" />
+      <img src={LinkedinLogo} className="w-32 pt-2 pl-4 sm:pl-10 " />
       <div className="flex justify-center items-center h-screen">
-        <div className=" bg-white max-w-md w-full p-6 rounded-lg shadow-xl">
+        <div className=" bg-white max-w-sm w-full p-6 rounded-lg shadow-xl">
           <h1 className="text-3xl font-semibold my-3 ">Join LinkedIn</h1>
           <div className="my-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -70,10 +70,10 @@ export default function RegisterComponent() {
               className="border rounded w-full text-gray-700 p-3 focus:outline-gray-900 focus-within:shadow-lg"
             />
           </div>
-          <div className="text-center py-6 ">
+          <div className="text-center py-6">
             <button
               onClick={register}
-              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-32 rounded-full focus:outline-none focus:shadow-outline"
+              className="bg-blue-700 hover:bg-blue-800 text-white font-bold w-full py-2 rounded-full focus:outline-none focus:shadow-outline"
             >
               Agree & Join
             </button>
