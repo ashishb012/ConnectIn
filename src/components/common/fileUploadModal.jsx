@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Modal, Progress } from "antd";
-// import "./fileUploadModal.scss";
 
 export default function FileUploadModal({
   modalOpen,

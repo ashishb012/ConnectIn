@@ -9,14 +9,14 @@ export default function ConnectedUsers({ user, getCurrentUser, currentUser }) {
   return isConnected ? (
     <></>
   ) : (
-    <div className="flex flex-col items-center justify-center bg-white rounded p-6">
+    <div className="flex flex-col items-center justify-center max-w-lg p-6 bg-white rounded">
       <img src={user.imageLink} className="block w-20 m-2" />
-      <p className="font-semibold p-2">{user.name}</p>
-      <p className=" font-normal p-1">{user.headline}</p>
+      <p className="p-2 font-semibold">{user.name}</p>
+      <p className="p-1 font-normal ">{user.headline}</p>
 
       <button
         onClick={() => getCurrentUser(user.id)}
-        className=" bg-blue-700 hover:bg-blue-800 text-white font-bold py-1 px-8 rounded-full  focus:outline-none focus:shadow-outline"
+        className="px-8 py-1 font-bold text-white bg-blue-700 rounded-full  hover:bg-blue-800 focus:outline-none focus:shadow-outline"
       >
         Connect
       </button>

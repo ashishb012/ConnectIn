@@ -6,9 +6,9 @@ import {
   getComments,
 } from "../../api/FirestoreAPI";
 import { getCurrentTimeStamp } from "../../helpers/useMoment";
-import "./likeButton.scss";
 import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
 import { BsFillHandThumbsUpFill, BsHandThumbsUp } from "react-icons/bs";
+// import "./likeButton.scss";
 
 export default function LikeButton({ userId, postId, currentUser }) {
   const [likesCount, setLikesCount] = useState(0);
@@ -32,23 +32,22 @@ export default function LikeButton({ userId, postId, currentUser }) {
     getComments(postId, setComments);
   }, [userId, postId]);
   return (
-    <div className="like-container">
-      <p>{likesCount} People Like this Post</p>
-      <div className="hr-line">
-        <hr />
+    <div className="flex flex-col justify-center gap-4 p-2">
+      <div className="my-2">
+        <hr className="border-t border-gray-900" />
       </div>
-      <div className="like-comment">
-        <div className="likes-comment-inner" onClick={handleLike}>
+      <div className="grid grid-flow-col hover:cursor-pointer">
+        <div className="flex justify-start" onClick={handleLike}>
           {liked ? (
-            <BsFillHandThumbsUpFill size={30} color="#0a66c2" />
+            <BsFillHandThumbsUpFill size={30} color="#1e40af" />
           ) : (
             <BsHandThumbsUp size={30} />
           )}
 
-          <p className={liked ? "blue" : "black"}>Like</p>
+          <p className={liked ? "text-blue-800" : "text-black"}>Like</p>
         </div>
         <div
-          className="likes-comment-inner"
+          className="flex justify-start hover:cursor-pointer"
           onClick={() => setShowCommentBox(!showCommentBox)}
         >
           {
@@ -58,30 +57,38 @@ export default function LikeButton({ userId, postId, currentUser }) {
             />
           }
 
-          <p className={showCommentBox ? "blue" : "black"}>Comments</p>
+          <p className={showCommentBox ? "text-blue-800" : "text-black"}>
+            Comments
+          </p>
         </div>
       </div>
+      <p className="ml-2 font-normal text-gray-600">
+        {likesCount} People Liked this Post
+      </p>
       {showCommentBox ? (
         <>
           <input
             onChange={getComment}
             placeholder="Add a Comment"
-            className="comment-input"
+            className="h-10 p-3 font-normal bg-white border border-gray-800 rounded-full focus:outline focus:outline-gray-700"
             name="comment"
             value={comment}
           />
-          <button className="add-comment-btn" onClick={addComment}>
+          <button
+            className="self-center p-2 my-3 border-2 rounded-lg w-fit bg-slate-50 hover:cursor-pointer hover:border-gray-900"
+            onClick={addComment}
+          >
             Add Comment
           </button>
 
           {comments.length > 0 ? (
             comments.map((comment) => {
               return (
-                <div className="all-comments">
-                  <p className="name">{comment.name}</p>
-                  <p className="comment">{comment.comment}</p>
+                <div className="relative flex flex-col justify-center m-3 bg-white rounded">
+                  <p className="mx-2 font-semibold">{comment.name}</p>
+                  <p className="mx-2 font-normal">{comment.comment}</p>
 
-                  <p className="timestamp">{comment.timeStamp}</p>
+                  <p className="mx-2 font-normal">{comment.timeStamp}</p>
                   {/* 
                   <p>•</p>
                    */}

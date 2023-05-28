@@ -1,11 +1,9 @@
 import React from "react";
 import { Space, Spin } from "antd";
-import "./loader.scss";
 
 export default function Loader() {
   return (
-    <div className="loader">
-      <p>Loading..Please Wait..</p>
+    <div className="flex flex-col items-center justify-center h-screen gap-3">
       <Space size="middle">
         <Spin size="large" />
       </Space>
