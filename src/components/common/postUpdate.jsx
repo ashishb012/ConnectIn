@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { postStatus, getStatus, updatePost } from "../../api/FirestoreAPI";
 import { getCurrentTimeStamp } from "../../helpers/useMoment";
-import ModalComponent from "./Modal";
+import ModalComponent from "./modal";
 import { uploadPostImage } from "../../api/ImageUpload";
 import { getUniqueID } from "../../helpers/getUniqueId";
 import PostsCard from "./PostsCard";

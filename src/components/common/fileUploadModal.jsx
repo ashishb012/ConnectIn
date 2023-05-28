@@ -16,7 +16,10 @@ export default function FileUploadModal({
         centered
         open={modalOpen}
         onOk={() => setModalOpen(false)}
-        onCancel={() => setModalOpen(false)}
+        onCancel={() => {
+          setModalOpen(false);
+          getImage({});
+        }}
         footer={[
           <Button
             className=" bg-slate-500"
@@ -29,7 +32,7 @@ export default function FileUploadModal({
           </Button>,
         ]}
       >
-        <div className=" text-center ">
+        <div className="text-center ">
           <p className="p-2 text-lg">
             {currentImage.name ? currentImage.name : ""}
           </p>
@@ -50,16 +53,17 @@ export default function FileUploadModal({
             hidden
             id="image-upload"
             type={"file"}
-            onChange={
-              getImage
-              // () => {
-              // if (this.file[0].size > 16384) {
-              //   alert("File size too big. Compress it & try again.");
-              // } else {
-              //   getImage;
-              // }}
-            }
-            accept=".png, .jpg, .jpeg"
+            onChange={(event) => {
+              // console.log(event.target.files[0].size);
+              if (event.target != undefined) {
+                if (event.target.files[0].size > 2e6) {
+                  alert("File size too big. Compress it & try again.");
+                } else {
+                  getImage(event.target.files[0]);
+                }
+              }
+            }}
+            accept=".png, .jpg, .jpeg, .svg"
           />
         </div>
       </Modal>

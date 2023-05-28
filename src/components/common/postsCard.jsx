@@ -8,7 +8,7 @@ import {
   deletePost,
   getConnections,
 } from "../../api/FirestoreAPI";
-import LikeButton from "./likeButton";
+import LikeButton from "./likeComments";
 import "./postsCard.scss";
 
 export default function PostsCard({ posts, id, getEditData }) {

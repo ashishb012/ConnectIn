@@ -8,9 +8,8 @@ import {
 import { getCurrentTimeStamp } from "../../helpers/useMoment";
 import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
 import { BsFillHandThumbsUpFill, BsHandThumbsUp } from "react-icons/bs";
-// import "./likeButton.scss";
 
-export default function LikeButton({ userId, postId, currentUser }) {
+export default function LikeComments({ userId, postId, currentUser }) {
   const [likesCount, setLikesCount] = useState(0);
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [liked, setLiked] = useState(false);
@@ -85,10 +84,15 @@ export default function LikeButton({ userId, postId, currentUser }) {
             comments.map((comment) => {
               return (
                 <div className="relative flex flex-col justify-center m-3 bg-white rounded">
-                  <p className="mx-2 font-semibold">{comment.name}</p>
-                  <p className="mx-2 font-normal">{comment.comment}</p>
-
-                  <p className="mx-2 font-normal">{comment.timeStamp}</p>
+                  <p className="mx-2 font-semibold" key={comment.name}>
+                    {comment.name}
+                  </p>
+                  <p className="mx-2 font-normal" key={comment.comment}>
+                    {comment.comment}
+                  </p>
+                  <p className="mx-2 font-normal" key={comment.timeStamp}>
+                    {comment.timeStamp}
+                  </p>
                   {/* 
                   <p>•</p>
                    */}

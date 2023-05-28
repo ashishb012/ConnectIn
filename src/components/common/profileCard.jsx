@@ -3,7 +3,7 @@ import { getSingleStatus, getSingleUser } from "../../api/FirestoreAPI";
 import PostsCard from "./PostsCard";
 import { HiOutlinePencil } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
-import FileUploadModal from "./FileUploadModal";
+import FileUploadModal from "./fileUploadModal";
 import { uploadImage as uploadImageAPI } from "../../api/ImageUpload";
 import "./profileCard.scss";
 
@@ -14,9 +14,12 @@ export default function ProfileCard({ onEdit, currentUser }) {
   const [currentImage, setCurrentImage] = useState({});
   const [progress, setProgress] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
-  const getImage = (event) => {
-    setCurrentImage(event.target.files[0]);
-  };
+  // const getImage = (event) => {
+  //   setCurrentImage(event.target.files[0]);
+  // };
+  function getImage(image) {
+    setCurrentImage(image);
+  }
   console.log(currentProfile);
   const uploadImage = () => {
     uploadImageAPI(

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Modal, Progress } from "antd";
 import { AiOutlinePicture } from "react-icons/ai";
 import ReactQuill from "react-quill";
-import "./modal.scss";
 
 const ModalComponent = ({
   modalOpen,
@@ -43,14 +42,14 @@ const ModalComponent = ({
             key="submit"
             type="primary"
             disabled={status.length > 0 ? false : true}
+            className="bg-slate-500"
           >
             {isEdit ? "Update" : "Post"}
           </Button>,
         ]}
       >
-        <div className="posts-body">
+        <div>
           <ReactQuill
-            className="modal-input"
             theme="snow"
             value={status}
             placeholder="Share Something Useful.."
@@ -59,30 +58,37 @@ const ModalComponent = ({
           {progress === 0 || progress === 100 ? (
             <></>
           ) : (
-            <div className="progress-bar">
+            <div>
               <Progress type="circle" percent={progress} />
             </div>
           )}
-          {postImage?.length > 0 || currentPost?.postImage?.length ? (
-            <img
-              className="preview-image"
-              src={postImage || currentPost?.postImage}
-              alt="postImage"
-            />
+          {postImage?.length > 0 || currentPost?.postImage?.length > 0 ? (
+            <img src={postImage || currentPost?.postImage} alt="postImage" />
           ) : (
             <></>
           )}
         </div>
         <label htmlFor="pic-upload">
-          <AiOutlinePicture size={35} className="picture-icon" />
+          <AiOutlinePicture size={35} />
         </label>
         <input
           id="pic-upload"
           type={"file"}
+          accept=".png, .jpg, .jpeg, .svg"
           hidden
-          onChange={(event) =>
-            uploadPostImage(event.target.files[0], setPostImage, setProgress)
-          }
+          onChange={(event) => {
+            if (event.target != undefined) {
+              if (event.target.files[0].size > 2e6) {
+                alert("File size too big. Compress it & try again.");
+              } else {
+                uploadPostImage(
+                  event.target.files[0],
+                  setPostImage,
+                  setProgress
+                );
+              }
+            }
+          }}
         />
       </Modal>
     </>

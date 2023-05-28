@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { onLogout } from "../../api/AuthAPI";
 import { getCurrentUser } from "../../api/FirestoreAPI";
 import Button from "./button";
-import "./profilePopup.scss";
 
 export default function ProfilePopup() {
   let navigate = useNavigate();
@@ -12,9 +11,9 @@ export default function ProfilePopup() {
     getCurrentUser(setCurrentUser);
   }, []);
   return (
-    <div className="popup-card">
-      <p className="name">{currentUser?.name}</p>
-      <p className="headline">{currentUser?.headline}</p>
+    <div className="flex flex-col justify-center h-auto p-5 border-2 border-gray-900 rounded-lg w-60 bg-slate-50">
+      <p className="font-semibold text-center ">{currentUser?.name}</p>
+      <p className="font-normal">{currentUser?.headline}</p>
       <Button
         title="View Profile"
         onClick={() =>

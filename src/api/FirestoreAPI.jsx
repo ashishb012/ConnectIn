@@ -35,7 +35,7 @@ export const postStatus = (object) => {
 };
 
 export const getStatus = (setAllStatus) => {
-  const q = query(postsRef, orderBy("timeStamp"));
+  const q = query(postsRef, orderBy("timeStamp", "desc"));
   onSnapshot(q, (response) => {
     setAllStatus(
       response.docs.map((docs) => {
