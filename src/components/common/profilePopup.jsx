@@ -11,7 +11,7 @@ export default function ProfilePopup() {
     getCurrentUser(setCurrentUser);
   }, []);
   return (
-    <div className="flex flex-col justify-center h-auto p-5 border-2 border-gray-900 rounded-lg w-60 bg-slate-50">
+    <div className="absolute z-0 h-auto p-5 border-2 border-gray-900 rounded-lg right-8 top-24 w-60 bg-slate-50">
       <p className="font-semibold text-center ">{currentUser?.name}</p>
       <p className="font-normal">{currentUser?.headline}</p>
       <Button

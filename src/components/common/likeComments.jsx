@@ -43,7 +43,13 @@ export default function LikeComments({ userId, postId, currentUser }) {
             <BsHandThumbsUp size={30} />
           )}
 
-          <p className={liked ? "text-blue-800" : "text-black"}>Like</p>
+          <div className={liked ? "text-blue-800" : "text-black"}>
+            {likesCount > 1 ? (
+              <p>{likesCount} Likes</p>
+            ) : (
+              <p>{likesCount} Like</p>
+            )}
+          </div>
         </div>
         <div
           className="flex justify-start hover:cursor-pointer"
@@ -61,9 +67,6 @@ export default function LikeComments({ userId, postId, currentUser }) {
           </p>
         </div>
       </div>
-      <p className="ml-2 font-normal text-gray-600">
-        {likesCount} People Liked this Post
-      </p>
       {showCommentBox ? (
         <>
           <input

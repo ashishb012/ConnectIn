@@ -55,7 +55,7 @@ export default function FileUploadModal({
             type={"file"}
             onChange={(event) => {
               // console.log(event.target.files[0].size);
-              if (event.target != undefined) {
+              if (event.target !== undefined) {
                 if (event.target.files[0].size > 2e6) {
                   alert("File size too big. Compress it & try again.");
                 } else {

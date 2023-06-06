@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { BsBriefcase } from "react-icons/bs";
 import { getAllUsers } from "../../api/FirestoreAPI";
 import ProfilePopup from "./profilePopup";
-import "./topbar.scss";
+// import "./topbar.scss";
 
 export default function Topbar({ currentUser }) {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -65,61 +65,75 @@ export default function Topbar({ currentUser }) {
     getAllUsers(setUsers);
   }, []);
   return (
-    <div className="topbar-main z-0">
-      {popupVisible ? (
-        <div className="popup-position">
-          <ProfilePopup />
+    <div className="fixed top-0 left-0 z-10 w-full m-2 bg-white border-b border-gray-200">
+      <div className="flex flex-wrap items-center justify-between p-4">
+        {popupVisible ? (
+          <div className="flex">
+            <ProfilePopup />
+          </div>
+        ) : (
+          <></>
+        )}
+        <div className="flex items-center ">
+          <img className="mr-3 w-28" src={LinkedinLogo} alt="LinkedinLogo" />
+          {/* <span className="self-center text-2xl font-semibold ">AppName</span> */}
         </div>
-      ) : (
-        <></>
-      )}
-
-      <img className="linkedin-logo" src={LinkedinLogo} alt="LinkedinLogo" />
-      {isSearch ? (
-        <SearchUsers
-          setIsSearch={setIsSearch}
-          setSearchInput={setSearchInput}
-        />
-      ) : (
-        <div className="react-icons">
-          <AiOutlineSearch
-            size={30}
-            className="react-icon"
-            onClick={() => setIsSearch(true)}
+        {isSearch ? (
+          <SearchUsers
+            setIsSearch={setIsSearch}
+            setSearchInput={setSearchInput}
           />
-          <AiOutlineHome
-            size={30}
-            className="react-icon"
-            onClick={() => goToRoute("/home")}
+        ) : (
+          <div className="flex items-center justify-between w-auto ">
+            <div className="flex flex-row mt-4 space-x-8 font-medium">
+              <AiOutlineSearch
+                size={30}
+                className="hover:cursor-pointer"
+                onClick={() => setIsSearch(true)}
+              />
+              <AiOutlineHome
+                size={30}
+                className="hover:cursor-pointer"
+                onClick={() => goToRoute("/home")}
+              />
+              <AiOutlineUserSwitch
+                size={30}
+                className="hover:cursor-pointer"
+                onClick={() => goToRoute("/connections")}
+              />
+              <BsBriefcase size={30} className="" />
+              <AiOutlineMessage size={30} className="" />
+              <AiOutlineBell size={30} className="" />
+            </div>
+          </div>
+        )}
+        <div className="flex">
+          <img
+            className="w-10 h-10 rounded-full focus:border-2 focus:border-gray-800"
+            src={currentUser?.imageLink}
+            alt="user"
+            onClick={displayPopup}
           />
-          <AiOutlineUserSwitch
-            size={30}
-            className="react-icon"
-            onClick={() => goToRoute("/connections")}
-          />
-          <BsBriefcase size={30} className="react-icon" />
-          <AiOutlineMessage size={30} className="react-icon" />
-          <AiOutlineBell size={30} className="react-icon" />
         </div>
-      )}
-      <img
-        className="user-logo"
-        src={currentUser?.imageLink}
-        alt="user"
-        onClick={displayPopup}
-      />
+      </div>
 
       {searchInput.length === 0 ? (
         <></>
       ) : (
-        <div className="search-results z-auto">
+        <div className="w-2/5 h-auto m-auto bg-white border-2 border-gray-400 rounded-md">
           {filteredUsers.length === 0 ? (
-            <div className="search-inner">No Results Found..</div>
+            <div className="m-2">No Results Found..</div>
           ) : (
             filteredUsers.map((user) => (
-              <div className="search-inner  " onClick={() => openUser(user)}>
-                <img src={user.imageLink} />
-                <p className="name">{user.name}</p>
+              <div
+                className="flex items-center gap-3 p-2 m-2 hover:cursor-pointer hover:bg-slate-100"
+                onClick={() => openUser(user)}
+              >
+                <img
+                  src={user.imageLink}
+                  className="object-cover w-10 h-10 rounded-full"
+                />
+                <p className="font-medium">{user.name}</p>
               </div>
             ))
           )}

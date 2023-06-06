@@ -77,7 +77,7 @@ const ModalComponent = ({
           accept=".png, .jpg, .jpeg, .svg"
           hidden
           onChange={(event) => {
-            if (event.target != undefined) {
+            if (event.target !== undefined) {
               if (event.target.files[0].size > 2e6) {
                 alert("File size too big. Compress it & try again.");
               } else {

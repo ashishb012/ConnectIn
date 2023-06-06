@@ -166,7 +166,6 @@ export const getComments = (postId, setComments) => {
           ...doc.data(),
         };
       });
-
       setComments(comments);
     });
   } catch (err) {
