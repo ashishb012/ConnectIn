@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import { BsBriefcase } from "react-icons/bs";
 import { getAllUsers } from "../../api/FirestoreAPI";
 import ProfilePopup from "./profilePopup";
-// import "./topbar.scss";
 
 export default function Topbar({ currentUser }) {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -65,7 +64,7 @@ export default function Topbar({ currentUser }) {
     getAllUsers(setUsers);
   }, []);
   return (
-    <div className="fixed top-0 left-0 z-10 w-full m-2 bg-white border-b border-gray-200">
+    <div className="fixed top-0 left-0 z-10 w-full px-2 pb-2 bg-white border-b border-gray-200 h-1/6">
       <div className="flex flex-wrap items-center justify-between p-4">
         {popupVisible ? (
           <div className="flex">
@@ -109,7 +108,7 @@ export default function Topbar({ currentUser }) {
         )}
         <div className="flex">
           <img
-            className="w-10 h-10 rounded-full focus:border-2 focus:border-gray-800"
+            className="w-10 h-auto rounded-full focus:border-2 focus:border-gray-800"
             src={currentUser?.imageLink}
             alt="user"
             onClick={displayPopup}
@@ -131,7 +130,7 @@ export default function Topbar({ currentUser }) {
               >
                 <img
                   src={user.imageLink}
-                  className="object-cover w-10 h-10 rounded-full"
+                  className="object-cover w-10 h-auto rounded-full"
                 />
                 <p className="font-medium">{user.name}</p>
               </div>

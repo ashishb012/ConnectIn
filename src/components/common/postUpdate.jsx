@@ -5,7 +5,6 @@ import ModalComponent from "./modal";
 import { uploadPostImage } from "../../api/ImageUpload";
 import { getUniqueID } from "../../helpers/getUniqueId";
 import PostsCard from "./PostsCard";
-import "./postUpdate.scss";
 
 export default function PostStatus({ currentUser }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,20 +47,24 @@ export default function PostStatus({ currentUser }) {
   }, []);
 
   return (
-    <div className="post-status-main">
-      <div className="user-details">
-        <img src={currentUser?.imageLink} alt="imageLink" />
-        <p className="name">{currentUser?.name}</p>
-        <p className="headline">{currentUser?.headline}</p>
-      </div>
-      <div className="post-status">
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center w-2/4 h-auto p-2 mt-32 border border-gray-500 rounded-xl bg-slate-100">
         <img
-          className="post-image"
+          src={currentUser?.imageLink}
+          alt="imageLink"
+          className="object-cover h-auto m-2 border-2 border-black rounded-full w-28"
+        />
+        <p className="text-xl font-bold">{currentUser?.name}</p>
+        <p className="font-semibold">{currentUser?.headline}</p>
+      </div>
+      <div className="flex items-center justify-center w-2/4 h-auto p-2 mt-8 border border-gray-500 rounded-xl bg-slate-100">
+        <img
+          className="object-cover w-16 h-auto m-2 border-2 rounded-full"
           src={currentUser?.imageLink}
           alt="imageLink"
         />
         <button
-          className="open-post-modal"
+          className="w-4/5 p-3 font-normal text-left border border-gray-400 rounded-full cursor-pointer bg-slate-50 hover:bg-slate-200"
           onClick={() => {
             setModalOpen(true);
             setIsEdit(false);

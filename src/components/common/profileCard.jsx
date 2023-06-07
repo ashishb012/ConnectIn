@@ -51,18 +51,22 @@ export default function ProfileCard({ onEdit, currentUser }) {
         currentImage={currentImage}
         progress={progress}
       />
-      <div className="profile-card">
+      <div className="w-auto h-auto p-5 m-8 mt-32 rounded-lg bg-slate-100">
         {currentUser.id === location?.state?.id ? (
-          <div className="edit-btn">
-            <HiOutlinePencil className="edit-icon" onClick={onEdit} />
+          <div className="flex justify-end">
+            <HiOutlinePencil
+              size={25}
+              className="cursor-pointer hover:bg-slate-300 hover:rounded-full"
+              onClick={onEdit}
+            />
           </div>
         ) : (
           <></>
         )}
-        <div className="profile-info">
+        <div className="flex justify-between">
           <div>
             <img
-              className="profile-image"
+              className="object-cover w-48 rounded-full"
               onClick={() => setModalOpen(true)}
               src={
                 Object.values(currentProfile).length === 0
