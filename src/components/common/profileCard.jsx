@@ -58,15 +58,16 @@ export default function ProfileCard({ onEdit, currentUser }) {
               size={25}
               className="cursor-pointer hover:bg-slate-300 hover:rounded-full"
               onClick={onEdit}
+              title="Edit Profile"
             />
           </div>
         ) : (
           <></>
         )}
         <div className="flex justify-between">
-          <div>
+          <div className="p-3">
             <img
-              className="object-cover w-48 rounded-full"
+              className="object-cover w-48 border-2 border-black rounded-full hover:cursor-pointer"
               onClick={() => setModalOpen(true)}
               src={
                 Object.values(currentProfile).length === 0
@@ -74,30 +75,33 @@ export default function ProfileCard({ onEdit, currentUser }) {
                   : currentProfile?.imageLink
               }
               alt="profile-image"
+              title="Change profile image"
             />
-            <h3 className="userName">
+
+            <h3 className="mt-3 text-xl font-bold">
               {Object.values(currentProfile).length === 0
                 ? currentUser.name
                 : currentProfile?.name}
             </h3>
-            <p className="heading">
+            <p className="font-medium w-80">
               {Object.values(currentProfile).length === 0
                 ? currentUser.headline
                 : currentProfile?.headline}
             </p>
+            {/* {console.log( currentUser.city, currentUser.country, currentProfile?.city, currentProfile?.country )} */}
             {(currentUser.city || currentUser.country) &&
             (currentProfile?.city || currentProfile?.country) ? (
-              <p className="location">
+              <p className="">
                 {Object.values(currentProfile).length === 0
                   ? `${currentUser.city}, ${currentUser.country} `
                   : `${currentProfile?.city}, ${currentUser.country}`}
               </p>
             ) : (
-              <></>
+              <> </>
             )}
             {currentUser.website || currentProfile?.website ? (
               <a
-                className="website"
+                className="text-blue-600"
                 target="_blank"
                 href={
                   Object.values(currentProfile).length === 0
@@ -113,29 +117,29 @@ export default function ProfileCard({ onEdit, currentUser }) {
               <></>
             )}
           </div>
-
-          <div className="right-info">
-            <p className="college">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.college
-                : currentProfile?.college}
-            </p>
-            <p className="company">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.company
-                : currentProfile?.company}
-            </p>
-          </div>
         </div>
-        <p className="about-me">
+
+        <div className="m-2 font-medium ">
+          <p>
+            {Object.values(currentProfile).length === 0
+              ? currentUser.college
+              : currentProfile?.college}
+          </p>
+          <p>
+            {Object.values(currentProfile).length === 0
+              ? currentUser.company
+              : currentProfile?.company}
+          </p>
+        </div>
+        <p className="w-2/4 m-2">
           {Object.values(currentProfile).length === 0
             ? currentUser.aboutMe
             : currentProfile?.aboutMe}
         </p>
 
         {currentUser.skills || currentProfile?.skills ? (
-          <p className="skills">
-            <span className="skill-label">Skills</span>:&nbsp;
+          <p className="m-2 font-medium">
+            <span className="font-normal">Skills</span>:&nbsp;
             {Object.values(currentProfile).length === 0
               ? currentUser.skills
               : currentProfile?.skills}
@@ -145,10 +149,10 @@ export default function ProfileCard({ onEdit, currentUser }) {
         )}
       </div>
 
-      <div className="post-status-main">
+      <div className="flex self-center justify-center">
         {allStatuses?.map((posts) => {
           return (
-            <div key={posts.id}>
+            <div key={posts.id} className="flex justify-center">
               <PostsCard posts={posts} />
             </div>
           );
