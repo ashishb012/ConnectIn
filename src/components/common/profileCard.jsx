@@ -148,7 +148,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
         )}
       </div>
 
-      <div className="flex self-center justify-center">
+      <div className="flex flex-col self-center justify-center">
         {allStatuses?.map((posts) => {
           return (
             <div key={posts.id} className="flex justify-center">

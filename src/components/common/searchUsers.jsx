@@ -13,7 +13,7 @@ export default function SearchUsers({ setIsSearch, setSearchInput }) {
 
         <AiOutlineCloseCircle
           className="p-1.5 w-fit h-full"
-          size={20}
+          size={25}
           onClick={() => {
             setIsSearch(false);
             setSearchInput("");

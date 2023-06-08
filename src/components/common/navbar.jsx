@@ -5,15 +5,15 @@ import {
   AiOutlineHome,
   AiOutlineUserSwitch,
   AiOutlineSearch,
-  AiOutlineMessage,
-  AiOutlineBell,
+  // AiOutlineMessage,
+  // AiOutlineBell,
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { BsBriefcase } from "react-icons/bs";
+// import { BsBriefcase } from "react-icons/bs";
 import { getAllUsers } from "../../api/FirestoreAPI";
 import ProfilePopup from "./profilePopup";
 
-export default function Topbar({ currentUser }) {
+export default function Navbar({ currentUser }) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [users, setUsers] = useState([]);
@@ -64,8 +64,8 @@ export default function Topbar({ currentUser }) {
     getAllUsers(setUsers);
   }, []);
   return (
-    <div className="fixed top-0 left-0 z-10 w-full px-2 pb-2 bg-white border-b border-gray-200 h-1/6">
-      <div className="flex flex-wrap items-center justify-between p-4">
+    <div className="fixed top-0 left-0 z-10 w-full h-24 px-2 pb-2 bg-white border-b border-gray-200">
+      <div className="flex flex-wrap items-center justify-between">
         {popupVisible ? (
           <div className="flex">
             <ProfilePopup />
@@ -74,7 +74,12 @@ export default function Topbar({ currentUser }) {
           <></>
         )}
         <div className="flex items-center ">
-          <img className="mr-3 w-28" src={LinkedinLogo} alt="LinkedinLogo" />
+          <img
+            className="m-2 w-28 hover:cursor-pointer"
+            src={LinkedinLogo}
+            alt="LinkedinLogo"
+            onClick={() => goToRoute("/home")}
+          />
           {/* <span className="self-center text-2xl font-semibold ">AppName</span> */}
         </div>
         {isSearch ? (
@@ -83,8 +88,8 @@ export default function Topbar({ currentUser }) {
             setSearchInput={setSearchInput}
           />
         ) : (
-          <div className="flex items-center justify-between w-auto ">
-            <div className="flex flex-row mt-4 space-x-8 font-medium">
+          <div className="flex items-center w-auto ">
+            <div className="flex flex-row space-x-8 font-medium">
               <AiOutlineSearch
                 size={30}
                 className="hover:cursor-pointer"
@@ -100,44 +105,21 @@ export default function Topbar({ currentUser }) {
                 className="hover:cursor-pointer"
                 onClick={() => goToRoute("/connections")}
               />
-              <BsBriefcase size={30} className="" />
+              {/* <BsBriefcase size={30} className="" />
               <AiOutlineMessage size={30} className="" />
-              <AiOutlineBell size={30} className="" />
+              <AiOutlineBell size={30} className="" /> */}
             </div>
           </div>
         )}
         <div className="flex">
           <img
-            className="w-10 h-auto rounded-full focus:border-2 focus:border-gray-800"
+            className="w-16 h-auto rounded-full hover:cursor-pointer"
             src={currentUser?.imageLink}
             alt="user"
             onClick={displayPopup}
           />
         </div>
       </div>
-
-      {searchInput.length === 0 ? (
-        <></>
-      ) : (
-        <div className="w-2/5 h-auto m-auto bg-white border-2 border-gray-400 rounded-md">
-          {filteredUsers.length === 0 ? (
-            <div className="m-2">No Results Found..</div>
-          ) : (
-            filteredUsers.map((user) => (
-              <div
-                className="flex items-center gap-3 p-2 m-2 hover:cursor-pointer hover:bg-slate-100"
-                onClick={() => openUser(user)}
-              >
-                <img
-                  src={user.imageLink}
-                  className="object-cover w-10 h-auto rounded-full"
-                />
-                <p className="font-medium">{user.name}</p>
-              </div>
-            ))
-          )}
-        </div>
-      )}
     </div>
   );
 }
