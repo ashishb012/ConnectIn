@@ -55,7 +55,9 @@ export default function PostStatus({ currentUser }) {
           className="object-cover h-auto m-2 border-2 border-black rounded-full w-28"
         />
         <p className="text-xl font-bold">{currentUser?.name}</p>
-        <p className="font-semibold w-80">{currentUser?.headline}</p>
+        <p className="w-3/4 font-semibold text-center">
+          {currentUser?.headline}
+        </p>
       </div>
       <div className="flex items-center justify-center w-2/4 h-auto p-2 mt-8 border border-gray-500 rounded-xl bg-slate-100">
         <img

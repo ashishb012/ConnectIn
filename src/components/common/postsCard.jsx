@@ -33,18 +33,23 @@ export default function PostsCard({ posts, id, getEditData }) {
       <div className="flex gap-2 p-2">
         <img
           alt="profile-image"
-          className="w-20 h-20 rounded-full "
+          className="w-20 h-20 rounded-full cursor-pointer"
           src={
             allUsers
               .filter((item) => item.id === posts.userID)
               .map((item) => item.imageLink)[0]
+          }
+          onClick={() =>
+            navigate(`/p/${posts?.userName}`, {
+              state: { id: posts?.userID, email: posts.userEmail },
+            })
           }
         />
         <div className="w-11/12">
           <p
             className="mx-1 text-lg font-bold hover:cursor-pointer"
             onClick={() =>
-              navigate("/profile", {
+              navigate(`/p/${posts?.userName}`, {
                 state: { id: posts?.userID, email: posts.userEmail },
               })
             }

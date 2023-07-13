@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllUsers } from "../../api/FirestoreAPI";
 import ProfilePopup from "./profilePopup";
 
-export default function Navbar({ currentUser }) {
+export default function Topbar({ currentUser }) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [users, setUsers] = useState([]);
@@ -29,7 +29,7 @@ export default function Navbar({ currentUser }) {
   };
 
   const openUser = (user) => {
-    navigate("/profile", {
+    navigate(`/p/${user.name}`, {
       state: {
         id: user.id,
         email: user.email,
@@ -64,61 +64,85 @@ export default function Navbar({ currentUser }) {
     getAllUsers(setUsers);
   }, []);
   return (
-    <div className="fixed top-0 left-0 z-10 w-full h-24 px-2 pb-2 bg-white border-b border-gray-200">
-      <div className="flex flex-wrap items-center justify-between">
-        {popupVisible ? (
-          <div className="flex">
-            <ProfilePopup />
-          </div>
-        ) : (
-          <></>
-        )}
-        <div className="flex items-center ">
-          <img
-            className="m-2 w-28 hover:cursor-pointer"
-            src={LinkedinLogo}
-            alt="LinkedinLogo"
-            onClick={() => goToRoute("/home")}
-          />
-          {/* <span className="self-center text-2xl font-semibold ">AppName</span> */}
+    <div>
+      {popupVisible ? (
+        <div>
+          <ProfilePopup />
         </div>
-        {isSearch ? (
-          <SearchUsers
-            setIsSearch={setIsSearch}
-            setSearchInput={setSearchInput}
-          />
-        ) : (
-          <div className="flex items-center w-auto ">
-            <div className="flex flex-row space-x-8 font-medium">
-              <AiOutlineSearch
-                size={30}
-                className="hover:cursor-pointer"
-                onClick={() => setIsSearch(true)}
-              />
-              <AiOutlineHome
-                size={30}
-                className="hover:cursor-pointer"
-                onClick={() => goToRoute("/home")}
-              />
-              <AiOutlineUserSwitch
-                size={30}
-                className="hover:cursor-pointer"
-                onClick={() => goToRoute("/connections")}
-              />
-              {/* <BsBriefcase size={30} className="" />
+      ) : (
+        <></>
+      )}
+      <div className="fixed top-0 left-0 z-10 w-full h-24 px-2 pb-2 bg-white border-b border-gray-200">
+        <div className="flex flex-wrap items-center justify-between">
+          <div className="flex items-center ">
+            <img
+              className="m-2 w-28 hover:cursor-pointer"
+              src={LinkedinLogo}
+              alt="LinkedinLogo"
+            />
+            {/* <span className="self-center text-2xl font-semibold ">AppName</span> */}
+          </div>
+          {isSearch ? (
+            <SearchUsers
+              setIsSearch={setIsSearch}
+              setSearchInput={setSearchInput}
+            />
+          ) : (
+            <div className="flex items-center w-auto ">
+              <div className="flex flex-row space-x-8 font-medium">
+                <AiOutlineSearch
+                  size={30}
+                  className="hover:cursor-pointer"
+                  onClick={() => setIsSearch(true)}
+                />
+                <AiOutlineHome
+                  size={30}
+                  className="hover:cursor-pointer"
+                  onClick={() => goToRoute("/home")}
+                />
+                <AiOutlineUserSwitch
+                  size={30}
+                  className="hover:cursor-pointer"
+                  onClick={() => goToRoute("/connections")}
+                />
+                {/* <BsBriefcase size={30} className="" />
               <AiOutlineMessage size={30} className="" />
               <AiOutlineBell size={30} className="" /> */}
+              </div>
             </div>
+          )}
+          <div className="flex">
+            <img
+              className="h-auto rounded-full w-14 focus:border-2 focus:border-gray-800"
+              src={currentUser?.imageLink}
+              alt="user"
+              onClick={displayPopup}
+            />
+          </div>
+        </div>
+
+        {searchInput.length === 0 ? (
+          <></>
+        ) : (
+          <div className="w-2/5 h-auto m-auto bg-white border-2 border-gray-400 rounded-md">
+            {filteredUsers.length === 0 ? (
+              <div className="m-2">No Results Found..</div>
+            ) : (
+              filteredUsers.map((user) => (
+                <div
+                  className="flex items-center gap-3 p-2 m-2 hover:cursor-pointer hover:bg-slate-100"
+                  onClick={() => openUser(user)}
+                >
+                  <img
+                    src={user.imageLink}
+                    className="object-cover w-10 h-auto rounded-full"
+                  />
+                  <p className="font-medium">{user.name}</p>
+                </div>
+              ))
+            )}
           </div>
         )}
-        <div className="flex">
-          <img
-            className="w-16 h-auto rounded-full hover:cursor-pointer"
-            src={currentUser?.imageLink}
-            alt="user"
-            onClick={displayPopup}
-          />
-        </div>
       </div>
     </div>
   );

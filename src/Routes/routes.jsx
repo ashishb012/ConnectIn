@@ -19,11 +19,15 @@ export const router = createBrowserRouter([
     element: <HomeLayout />,
   },
   {
-    path: "/profile",
+    path: "/p/:userName",
     element: <ProfileLayout />,
   },
   {
     path: "/connections",
     element: <ConnectionLayout />,
+  },
+  {
+    path: "/not-found",
+    // element: < />,
   },
 ]);

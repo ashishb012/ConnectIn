@@ -2,12 +2,14 @@ import React, { useState, useMemo } from "react";
 import { getSingleStatus, getSingleUser } from "../../api/FirestoreAPI";
 import PostsCard from "./PostsCard";
 import { HiOutlinePencil } from "react-icons/hi";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import FileUploadModal from "./fileUploadModal";
 import { uploadImage as uploadImageAPI } from "../../api/ImageUpload";
 
 export default function ProfileCard({ onEdit, currentUser }) {
   let location = useLocation();
+  const { userName } = useParams();
+  console.log("user", userName);
   const [allStatuses, setAllStatus] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [currentImage, setCurrentImage] = useState({});
@@ -76,7 +78,6 @@ export default function ProfileCard({ onEdit, currentUser }) {
               alt="profile-image"
               title="Change profile image"
             />
-
             <h3 className="mt-3 text-xl font-bold">
               {Object.values(currentProfile).length === 0
                 ? currentUser.name
@@ -148,7 +149,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
         )}
       </div>
 
-      <div className="flex flex-col self-center justify-center">
+      <div className="flex flex-col self-center justify-center center">
         {allStatuses?.map((posts) => {
           return (
             <div key={posts.id} className="flex justify-center">

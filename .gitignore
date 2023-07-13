@@ -1,4 +1,5 @@
 /src/firebaseConfigKeys.js
+.env
 
 # Logs
 logs
