@@ -27,13 +27,13 @@ export default function PostsCard({ posts, id, getEditData }) {
 
   return isConnected || currentUser.id === posts.userID ? (
     <div
-      className="flex flex-col w-2/4 h-auto p-5 m-5 border-2 border-gray-300 rounded-xl bg-slate-100"
+      className="flex flex-col h-auto max-w-2xl p-5 my-3 border-2 border-gray-300 w-72 md:w-4/5 rounded-xl bg-slate-100"
       key={id}
     >
-      <div className="flex gap-2 p-2">
+      <div className="flex w-full gap-2 p-2">
         <img
           alt="profile-image"
-          className="w-20 h-20 rounded-full cursor-pointer"
+          className="rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20"
           src={
             allUsers
               .filter((item) => item.id === posts.userID)
@@ -47,7 +47,7 @@ export default function PostsCard({ posts, id, getEditData }) {
         />
         <div className="w-11/12">
           <p
-            className="mx-1 text-lg font-bold hover:cursor-pointer"
+            className="mx-1 text-base font-bold md:text-xl hover:cursor-pointer"
             onClick={() =>
               navigate(`/p/${posts?.userName}`, {
                 state: { id: posts?.userID, email: posts.userEmail },
@@ -56,10 +56,12 @@ export default function PostsCard({ posts, id, getEditData }) {
           >
             {allUsers.filter((user) => user.id === posts.userID)[0]?.name}
           </p>
-          <p className="mx-1 font-semibold">
+          <p className="hidden mx-1 font-semibold md:block">
             {allUsers.filter((user) => user.id === posts.userID)[0]?.headline}
           </p>
-          <p className="mx-1 font-normal">{posts.timeStamp}</p>
+          <p className="mx-1 text-xs font-normal md:text-base">
+            {posts.timeStamp}
+          </p>
         </div>
         {currentUser.id === posts.userID ? (
           <div className="flex justify-between">
@@ -82,17 +84,12 @@ export default function PostsCard({ posts, id, getEditData }) {
         <img
           onClick={() => setImageModal(true)}
           src={posts.postImage}
-          className="w-full p-5 hover:cursor-pointer"
+          className="w-full p-1 hover:cursor-pointer"
           alt="post-image"
         />
       ) : (
         <></>
       )}
-      <p
-        className="m-2 text-left"
-        dangerouslySetInnerHTML={{ __html: posts.status }}
-      ></p>
-
       <LikeButton
         userId={currentUser?.id}
         postId={posts.id}

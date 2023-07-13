@@ -48,25 +48,25 @@ export default function PostStatus({ currentUser }) {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center w-2/4 h-auto p-2 mt-32 border border-gray-500 rounded-xl bg-slate-100">
+      <div className="flex flex-col items-center h-auto max-w-xl p-2 mt-32 border border-gray-500 rounded-xl bg-slate-100 w-72 md:w-4/5">
         <img
           src={currentUser?.imageLink}
           alt="imageLink"
-          className="object-cover h-auto m-2 border-2 border-black rounded-full w-28"
+          className="object-cover w-16 h-auto m-2 border-2 border-black rounded-full md:w-28"
         />
-        <p className="text-xl font-bold">{currentUser?.name}</p>
-        <p className="w-3/4 font-semibold text-center">
+        <p className="text-base font-bold md:text-xl">{currentUser?.name}</p>
+        <p className="w-full font-semibold text-center md:w-3/4">
           {currentUser?.headline}
         </p>
       </div>
-      <div className="flex items-center justify-center w-2/4 h-auto p-2 mt-8 border border-gray-500 rounded-xl bg-slate-100">
+      <div className="flex items-center justify-center h-auto max-w-xl p-2 mt-8 border border-gray-500 mb-7 w-72 md:w-4/5 rounded-xl bg-slate-100">
         <img
-          className="object-cover w-16 h-auto m-2 border-2 rounded-full"
+          className="object-cover w-10 h-auto m-2 border-2 rounded-full md:w-16"
           src={currentUser?.imageLink}
           alt="imageLink"
         />
         <button
-          className="w-4/5 p-3 font-normal text-left border border-gray-400 rounded-full cursor-pointer bg-slate-50 hover:bg-slate-200"
+          className="w-full p-2 font-normal text-left border border-gray-400 rounded-full cursor-pointer md:w-4/5 bg-slate-50 hover:bg-slate-200"
           onClick={() => {
             setModalOpen(true);
             setIsEdit(false);

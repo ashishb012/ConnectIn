@@ -68,7 +68,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
         <div className="flex justify-between">
           <div className="p-3">
             <img
-              className="object-cover w-48 border-2 border-black rounded-full hover:cursor-pointer"
+              className="object-cover border-2 border-black rounded-full w-28 md:w-48 hover:cursor-pointer"
               onClick={() => setModalOpen(true)}
               src={
                 Object.values(currentProfile).length === 0
@@ -78,12 +78,12 @@ export default function ProfileCard({ onEdit, currentUser }) {
               alt="profile-image"
               title="Change profile image"
             />
-            <h3 className="mt-3 text-xl font-bold">
+            <h3 className="mt-3 text-lg font-bold md:text-xl">
               {Object.values(currentProfile).length === 0
                 ? currentUser.name
                 : currentProfile?.name}
             </h3>
-            <p className="font-medium w-80">
+            <p className="text-base font-medium md:text-lg md:w-80">
               {Object.values(currentProfile).length === 0
                 ? currentUser.headline
                 : currentProfile?.headline}
@@ -131,7 +131,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
               : currentProfile?.company}
           </p>
         </div>
-        <p className="w-2/4 m-2">
+        <p className="m-2 md:w-2/4">
           {Object.values(currentProfile).length === 0
             ? currentUser.aboutMe
             : currentProfile?.aboutMe}

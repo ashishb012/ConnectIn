@@ -23,8 +23,15 @@ export default function LikeComments({ userId, postId, currentUser }) {
   };
 
   const addComment = () => {
-    postComment(postId, comment, getCurrentTimeStamp("LLL"), currentUser?.name);
-    setComment("");
+    if (comment !== "") {
+      postComment(
+        postId,
+        comment,
+        getCurrentTimeStamp("LLL"),
+        currentUser?.name
+      );
+      setComment("");
+    }
   };
   useMemo(() => {
     getLikesByUser(userId, postId, setLiked, setLikesCount);
@@ -38,9 +45,9 @@ export default function LikeComments({ userId, postId, currentUser }) {
       <div className="grid grid-flow-col hover:cursor-pointer">
         <div className="flex justify-start" onClick={handleLike}>
           {liked ? (
-            <BsFillHandThumbsUpFill size={30} color="#1e40af" />
+            <BsFillHandThumbsUpFill size={20} color="#1e40af" />
           ) : (
-            <BsHandThumbsUp size={30} />
+            <BsHandThumbsUp size={20} />
           )}
 
           <div className={liked ? "text-blue-800" : "text-black"}>
@@ -57,7 +64,7 @@ export default function LikeComments({ userId, postId, currentUser }) {
         >
           {
             <AiOutlineComment
-              size={30}
+              size={25}
               color={showCommentBox ? "#0a66c2" : "#212121"}
             />
           }
@@ -72,17 +79,17 @@ export default function LikeComments({ userId, postId, currentUser }) {
           <input
             onChange={getComment}
             placeholder="Add a Comment"
-            className="h-10 p-3 font-normal bg-white border border-gray-800 rounded-full focus:outline focus:outline-gray-700"
+            className="h-6 p-3 font-normal bg-white border border-gray-800 rounded-full md:h-10 focus:outline focus:outline-gray-700"
             name="comment"
             value={comment}
           />
+
           <button
-            className="self-center p-2 my-3 border-2 rounded-lg w-fit bg-slate-50 hover:cursor-pointer hover:border-gray-900"
+            className="self-center p-2 my-2 border-2 rounded-lg w-fit bg-slate-50 hover:cursor-pointer hover:border-gray-900"
             onClick={addComment}
           >
             Add Comment
           </button>
-
           {comments.length > 0 ? (
             comments.map((comment) => {
               return (
