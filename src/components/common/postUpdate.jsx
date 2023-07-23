@@ -95,7 +95,11 @@ export default function PostStatus({ currentUser }) {
         {allStatuses.map((posts) => {
           return (
             <div key={posts.id} className="flex justify-center">
-              <PostsCard posts={posts} getEditData={getEditData} />
+              <PostsCard
+                posts={posts}
+                id={posts.id}
+                getEditData={getEditData}
+              />
             </div>
           );
         })}

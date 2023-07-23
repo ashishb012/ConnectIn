@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from "react";
 import { getSingleStatus, getSingleUser } from "../../api/FirestoreAPI";
+import { postStatus, updatePost } from "../../api/FirestoreAPI";
+import { uploadPostImage } from "../../api/ImageUpload";
 import PostsCard from "./PostsCard";
 import { HiOutlinePencil } from "react-icons/hi";
 import { useLocation, useParams } from "react-router-dom";
 import FileUploadModal from "./fileUploadModal";
+import ModalComponent from "./modal";
 import { uploadImage as uploadImageAPI } from "../../api/ImageUpload";
 
 export default function ProfileCard({ onEdit, currentUser }) {
@@ -15,6 +18,42 @@ export default function ProfileCard({ onEdit, currentUser }) {
   const [currentImage, setCurrentImage] = useState({});
   const [progress, setProgress] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+
+  // const [modalOpen, setModalOpen] = useState(false);
+  const [status, setStatus] = useState("");
+  // const [allStatuses, setAllStatus] = useState([]);
+  const [currentPost, setCurrentPost] = useState({});
+  const [isEdit, setIsEdit] = useState(false);
+  const [postImage, setPostImage] = useState("");
+
+  const sendStatus = async () => {
+    let object = {
+      status: status,
+      timeStamp: getCurrentTimeStamp("LLL"),
+      userEmail: currentUser.email,
+      userName: currentUser.name,
+      postID: getUniqueID(),
+      userID: currentUser.id,
+      postImage: postImage,
+    };
+    await postStatus(object);
+    await setModalOpen(false);
+    setIsEdit(false);
+    await setStatus("");
+  };
+
+  const getEditData = (posts) => {
+    setModalOpen(true);
+    setStatus(posts?.status);
+    setCurrentPost(posts);
+    setIsEdit(true);
+  };
+
+  const updateStatus = () => {
+    updatePost(currentPost.id, status, postImage);
+    setModalOpen(false);
+  };
+
   // const getImage = (event) => {
   //   setCurrentImage(event.target.files[0]);
   // };
@@ -153,11 +192,29 @@ export default function ProfileCard({ onEdit, currentUser }) {
         {allStatuses?.map((posts) => {
           return (
             <div key={posts.id} className="flex justify-center">
-              <PostsCard posts={posts} />
+              <PostsCard
+                posts={posts}
+                id={posts.id}
+                getEditData={getEditData}
+              />
             </div>
           );
         })}
       </div>
+      <ModalComponent
+        setStatus={setStatus}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        status={status}
+        sendStatus={sendStatus}
+        isEdit={isEdit}
+        updateStatus={updateStatus}
+        uploadPostImage={uploadPostImage}
+        postImage={postImage}
+        setPostImage={setPostImage}
+        setCurrentPost={setCurrentPost}
+        currentPost={currentPost}
+      />
     </>
   );
 }

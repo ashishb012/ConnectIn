@@ -4,6 +4,7 @@ import Register from "../Pages/Register";
 import HomeLayout from "../layouts/HomeLayout";
 import ProfileLayout from "../layouts/ProfileLayout";
 import ConnectionLayout from "../layouts/ConnectionLayout";
+import PasswordReset from "../Pages/PasswordReset";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
   {
     path: "/connections",
     element: <ConnectionLayout />,
+  },
+  {
+    path: "/password-reset",
+    element: <PasswordReset />,
   },
   {
     path: "/not-found",

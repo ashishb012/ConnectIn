@@ -3,6 +3,7 @@ import { LoginAPI } from "../api/AuthAPI";
 import LinkedinLogo from "../assets/linkedinLogo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import GoogleSignIn from "./GoogleComponent";
 
 export default function LoginComponent() {
   let navigate = useNavigate();
@@ -13,14 +14,26 @@ export default function LoginComponent() {
         toast.error("Please enter email and password");
         return;
       }
-      let res = await LoginAPI(credentails.email, credentails.password);
-      toast.success("Signed In to Linkedin!");
+      const res = await LoginAPI(credentails.email, credentails.password);
+      if (res.code === "auth/invalid-email") {
+        toast.error("invalid email");
+        return;
+      }
+      if (res.code === "auth/wrong-password") {
+        toast.error("wrong password");
+        return;
+      }
+      if (res.code === "auth/user-not-found") {
+        toast.error("user not found");
+        return;
+      }
       localStorage.setItem("userEmail", res.user.email);
-      navigate("/home");
     } catch (err) {
-      logger.error(err);
       toast.error("Please Check your Credentials");
+      return;
     }
+    toast.success("Signed In to Linkedin!");
+    navigate("/home");
   };
 
   return (
@@ -54,14 +67,14 @@ export default function LoginComponent() {
             />
           </div>
           <div className="my-6">
-            <a
+            <button
               className="font-semibold text-blue-600 hover:cursor-pointer hover:underline"
-              href=""
+              onClick={() => navigate("/password-reset")}
             >
               Forgot password?
-            </a>
+            </button>
           </div>
-          <div className="py-6 text-center ">
+          <div className="py-4 text-center ">
             <button
               onClick={login}
               className="w-full py-2 font-bold text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:outline-none focus:shadow-outline"
@@ -69,8 +82,8 @@ export default function LoginComponent() {
               Sign in
             </button>
           </div>
-          <p className="text-center">OR</p>
-          {/* TODO: Google */}
+          <p className="py-4 text-center">OR</p>
+          <GoogleSignIn />
           <div className="my-4 ">
             <p className="text-center">
               New to LinkedIn?&nbsp;
