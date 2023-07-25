@@ -7,7 +7,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { FirebaseError } from "firebase-tools/lib/error";
 
 export const LoginAPI = async (email, password) => {
   try {

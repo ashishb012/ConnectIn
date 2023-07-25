@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LinkedinLogo from "../../assets/linkedinLogo.png";
+import ConnectInLogo from "../../assets/ConnectInLogo.png";
 import SearchUsers from "./searchUsers";
 import {
   AiOutlineHome,
@@ -76,9 +76,10 @@ export default function Topbar({ currentUser }) {
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center ">
             <img
-              className="m-2 w-28 hover:cursor-pointer"
-              src={LinkedinLogo}
-              alt="LinkedinLogo"
+              className="w-32 ml-2 hover:cursor-pointer md:w-52"
+              src={ConnectInLogo}
+              alt="ConnectInLogo"
+              onClick={() => goToRoute("/home")}
             />
             {/* <span className="self-center text-2xl font-semibold ">AppName</span> */}
           </div>
@@ -89,7 +90,7 @@ export default function Topbar({ currentUser }) {
             />
           ) : (
             <div className="flex items-center w-auto ">
-              <div className="flex flex-row space-x-8 font-medium">
+              <div className="flex flex-row space-x-4 font-medium md:space-x-10">
                 <AiOutlineSearch
                   size={30}
                   className="hover:cursor-pointer"

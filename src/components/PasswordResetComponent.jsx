@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ResetPasswordAPI } from "../api/AuthAPI";
-import LinkedinLogo from "../assets/linkedinLogo.png";
+import ConnectInLogo from "../assets/ConnectInLogo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -33,7 +33,7 @@ export default function PasswordResetComponent() {
 
   return (
     <div className="bg-neutral-100">
-      <img src={LinkedinLogo} className="w-32 pt-2 pl-4 sm:pl-10" />
+      <img src={ConnectInLogo} className="p-2 w-52" />
       <div className="flex items-center justify-center h-screen">
         <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-xl ">
           <h1 className="my-3 text-3xl font-semibold ">Password reset</h1>

@@ -27,7 +27,7 @@ export default function PostsCard({ posts, id, getEditData }) {
 
   return isConnected || currentUser.id === posts.userID ? (
     <div
-      className="flex flex-col h-auto max-w-2xl p-5 my-3 border-2 border-gray-300 w-72 md:w-4/5 rounded-xl bg-slate-100"
+      className="flex flex-col h-auto max-w-2xl p-2 my-3 border-2 border-gray-300 w-80 md:w-4/5 md:m-1 md:p-5 rounded-xl bg-slate-100"
       key={id}
     >
       <div className="flex w-full gap-2 p-2">
@@ -90,12 +90,12 @@ export default function PostsCard({ posts, id, getEditData }) {
       ) : (
         <></>
       )}
+      <p className="p-2" dangerouslySetInnerHTML={{ __html: posts.status }}></p>
       <LikeButton
         userId={currentUser?.id}
         postId={posts.id}
         currentUser={currentUser}
       />
-
       <Modal
         centered
         open={imageModal}

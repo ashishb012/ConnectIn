@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleSignInAPI } from "../api/AuthAPI";
 import GoogleLogo from "../assets/googleLogo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { postUserData } from "../api/FirestoreAPI";
-import { getUniqueID } from "../helpers/getUniqueId";
+import { getAllUsers } from "../api/FirestoreAPI";
 
 export default function GoogleSignIn() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const [users, setUser] = useState([]);
+
+  useEffect(() => {
+    getAllUsers(setUser);
+  }, []);
 
   const google = async () => {
     try {
-      let res = await GoogleSignInAPI();
+      const res = await GoogleSignInAPI();
       localStorage.setItem("userEmail", res.user.email);
-      postUserData({
-        userID: getUniqueID(),
-        name: res.user.displayName,
-        email: res.user.email,
-        imageLink:
-          "https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg",
+      // users.forEach((user) => {
+      //   if (user.id === res.user.uid) {
+      //     return;
+      //   }
+      // });
+      const newuser = users.filter((user) => {
+        console.log(user.userID, "uid", res.user.uid);
+        return user.userID === res.user.uid;
       });
-      toast.success("Signed In to Linkedin!");
+      console.log(newuser);
+      if (newuser.length === 0) {
+        console.log("new");
+        postUserData({
+          userID: res.user.uid,
+          name: res.user.displayName,
+          email: res.user.email,
+          imageLink:
+            "https://t4.ftcdn.net/jpg/02/29/75/83/240_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg",
+        });
+      }
+      toast.success("Signed In to ConnectIn!");
       navigate("/home");
     } catch (err) {
       console.log(err);

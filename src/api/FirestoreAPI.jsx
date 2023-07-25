@@ -56,7 +56,11 @@ export const getAllUsers = (setAllUsers) => {
 };
 
 export const getSingleStatus = (setAllStatus, id) => {
-  const singlePostQuery = query(postsRef, where("userID", "==", id));
+  const singlePostQuery = query(
+    postsRef,
+    where("userID", "==", id),
+    orderBy("timeStamp", "desc")
+  );
   onSnapshot(singlePostQuery, (response) => {
     setAllStatus(
       response.docs.map((docs) => {

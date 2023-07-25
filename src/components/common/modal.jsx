@@ -25,7 +25,7 @@ const ModalComponent = ({
         centered
         open={modalOpen}
         onOk={() => {
-          setStatus("");
+          setStatus({ status });
           setModalOpen(false);
           setPostImage("");
           setCurrentPost({});

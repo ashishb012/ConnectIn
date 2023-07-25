@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
+import { RegisterAPI } from "../api/AuthAPI";
 import { postUserData } from "../api/FirestoreAPI";
-import LinkedinLogo from "../assets/linkedinLogo.png";
+import ConnectInLogo from "../assets/ConnectInLogo.png";
 import { useNavigate } from "react-router-dom";
 import { getUniqueID } from "../helpers/getUniqueId";
 import { toast } from "react-toastify";
@@ -35,7 +35,7 @@ export default function RegisterComponent() {
       console.log(err);
       toast.error("Cannot Create your Account");
     }
-    toast.success("Signed In to Linkedin!");
+    toast.success("Signed In to ConnectIn!");
     postUserData({
       userID: getUniqueID(),
       name: credentails.name,
@@ -48,10 +48,10 @@ export default function RegisterComponent() {
 
   return (
     <div className="bg-neutral-100">
-      <img src={LinkedinLogo} className="w-32 pt-2 pl-4 sm:pl-10 " />
+      <img src={ConnectInLogo} className="p-2 w-52" />
       <div className="flex items-center justify-center h-screen">
         <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-xl ">
-          <h1 className="my-3 text-3xl font-semibold ">Join LinkedIn</h1>
+          <h1 className="my-3 text-3xl font-semibold ">Join ConnectIn</h1>
           <div className="my-6">
             <label className="block mb-2 text-sm font-bold text-gray-700">
               Name
@@ -100,7 +100,7 @@ export default function RegisterComponent() {
           <GoogleSignIn />
           <div className="my-4 ">
             <p className="text-center ">
-              Already on LinkedIn? &nbsp;
+              Already on ConnectIn? &nbsp;
               <span
                 className="font-semibold text-blue-600 hover:cursor-pointer hover:underline"
                 onClick={() => navigate("/")}
