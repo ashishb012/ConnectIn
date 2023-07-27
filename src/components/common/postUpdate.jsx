@@ -4,7 +4,7 @@ import { getCurrentTimeStamp } from "../../helpers/useMoment";
 import ModalComponent from "./modal";
 import { uploadPostImage } from "../../api/ImageUpload";
 import { getUniqueID } from "../../helpers/getUniqueId";
-import PostsCard from "./PostsCard";
+import PostsCard from "./postsCard";
 
 export default function PostStatus({ currentUser }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -52,7 +52,7 @@ export default function PostStatus({ currentUser }) {
         <img
           src={currentUser?.imageLink}
           alt="imageLink"
-          className="object-cover w-16 h-auto m-2 border-2 border-black rounded-full md:w-28"
+          className="object-cover w-16 h-16 m-2 border-2 border-black rounded-full md:w-28 md:h-28"
         />
         <p className="text-base font-bold md:text-xl">{currentUser?.name}</p>
         <p className="w-full font-semibold text-center md:w-3/4">
@@ -61,7 +61,7 @@ export default function PostStatus({ currentUser }) {
       </div>
       <div className="flex items-center justify-center h-auto max-w-xl p-2 mt-8 border border-gray-500 mb-7 w-72 md:w-4/5 rounded-xl bg-slate-100">
         <img
-          className="object-cover w-10 h-auto m-2 border-2 rounded-full md:w-16"
+          className="object-cover w-10 h-10 m-2 border-2 rounded-full md:w-16 md:h-16"
           src={currentUser?.imageLink}
           alt="imageLink"
         />

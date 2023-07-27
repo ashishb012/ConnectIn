@@ -6,7 +6,7 @@ import {
   getComments,
 } from "../../api/FirestoreAPI";
 import { getCurrentTimeStamp } from "../../helpers/useMoment";
-import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
+import { AiOutlineComment } from "react-icons/ai";
 import { BsFillHandThumbsUpFill, BsHandThumbsUp } from "react-icons/bs";
 
 export default function LikeComments({ userId, postId, currentUser }) {
@@ -103,9 +103,6 @@ export default function LikeComments({ userId, postId, currentUser }) {
                   <p className="mx-2 font-normal" key={comment.timeStamp}>
                     {comment.timeStamp}
                   </p>
-                  {/* 
-                  <p>•</p>
-                   */}
                 </div>
               );
             })

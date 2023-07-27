@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import {
   getCurrentUser,

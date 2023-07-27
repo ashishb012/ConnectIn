@@ -10,7 +10,11 @@ export default function ConnectedUsers({ user, getCurrentUser, currentUser }) {
     <></>
   ) : (
     <div className="flex flex-col items-center justify-center max-w-lg p-6 bg-white border-2 border-gray-600 shadow-lg w-60 rounded-xl xl:rounded-full">
-      <img src={user.imageLink} className="block w-24 h-24 m-2 rounded-full" />
+      <img
+        src={user.imageLink}
+        alt="user-image"
+        className="block w-24 h-24 m-2 rounded-full"
+      />
       <p className="p-2 font-semibold">{user.name}</p>
       <button
         onClick={() => getCurrentUser(user.id)}

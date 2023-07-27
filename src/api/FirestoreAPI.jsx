@@ -1,7 +1,3 @@
-//
-// TODO change cloud firestore from Public to Private
-//
-
 import { firestore } from "../firebaseConfig";
 import {
   addDoc,
@@ -14,7 +10,6 @@ import {
   setDoc,
   deleteDoc,
   orderBy,
-  serverTimestamp,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -229,3 +224,22 @@ export const getConnections = (userId, targetId, setIsConnected) => {
     console.log(err);
   }
 };
+
+// Objective:
+// The objective of the postStatus function is to add a new document to the "posts" collection in Firestore and display a success message using the react-toastify library.
+
+// Inputs:
+// - object: an object containing the data to be added to the "posts" collection in Firestore.
+
+// Flow:
+// 1. Call the addDoc function from the Firestore library, passing in the "posts" collection reference and the object as parameters.
+// 2. If the document is added successfully, display a success message using the react-toastify library.
+// 3. If there is an error, log the error to the console.
+
+// Outputs:
+// - Success message displayed using the react-toastify library.
+
+// Additional aspects:
+// - The function uses the Firestore library to interact with the database.
+// - The function uses the react-toastify library to display a success message to the user.
+// - The function handles errors by logging them to the console.

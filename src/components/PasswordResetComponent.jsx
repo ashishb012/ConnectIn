@@ -10,13 +10,12 @@ export default function PasswordResetComponent() {
   const sendResetPassword = async () => {
     try {
       if (!credentails.email) {
-        toast.error("Please enter email");
+        toast.error("Please enter your email");
         return;
       }
       let res = await ResetPasswordAPI(credentails.email).catch((e) => {
         throw e;
       });
-      console.log(res.code);
       if (res.code === "auth/invalid-email") {
         toast.error("invalid email");
         return;
@@ -26,22 +25,30 @@ export default function PasswordResetComponent() {
         return;
       }
     } catch (err) {
-      console.log(e, err);
       toast.error("Please Check your Credential");
     }
   };
 
   return (
     <div className="bg-neutral-100">
-      <img src={ConnectInLogo} className="p-2 w-52" />
+      <img
+        src={ConnectInLogo}
+        alt="ConnectInLogo"
+        title="ConnectIn Logo"
+        className="p-2 w-52"
+      />
       <div className="flex items-center justify-center h-screen">
         <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-xl ">
           <h1 className="my-3 text-3xl font-semibold ">Password reset</h1>
           <div className="my-6">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
+            <label
+              title="Email"
+              className="block mb-2 text-sm font-bold text-gray-700"
+            >
               Email
             </label>
             <input
+              title="Email"
               onChange={(event) =>
                 setCredentials({ ...credentails, email: event.target.value })
               }
@@ -49,7 +56,7 @@ export default function PasswordResetComponent() {
               className="w-full p-3 text-gray-700 border rounded focus:outline-gray-900 focus-within:shadow-lg"
             />
           </div>
-          <div className="py-6 text-center">
+          <div title="Send password reset email" className="py-6 text-center">
             <button
               onClick={sendResetPassword}
               className="w-full py-2 font-bold text-white bg-blue-700 rounded-full cursor-pointer hover:bg-blue-800 focus:outline-none focus:shadow-outline"
@@ -58,7 +65,7 @@ export default function PasswordResetComponent() {
             </button>
             <div className="p-2">Check your email for further instructions</div>
           </div>
-          <div className="my-4 ">
+          <div title="Changed password? Login" className="my-4 ">
             <p className="text-center">
               Changed password?&nbsp;
               <span
@@ -68,7 +75,6 @@ export default function PasswordResetComponent() {
                 Login
               </span>
             </p>
-            {/* TODO: Forgot password */}
           </div>
         </div>
       </div>

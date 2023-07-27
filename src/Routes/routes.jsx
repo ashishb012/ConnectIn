@@ -31,8 +31,4 @@ export const router = createBrowserRouter([
     path: "/password-reset",
     element: <PasswordReset />,
   },
-  {
-    path: "/not-found",
-    // element: < />,
-  },
 ]);

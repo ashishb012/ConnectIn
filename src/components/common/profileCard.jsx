@@ -2,26 +2,22 @@ import React, { useState, useMemo } from "react";
 import { getSingleStatus, getSingleUser } from "../../api/FirestoreAPI";
 import { postStatus, updatePost } from "../../api/FirestoreAPI";
 import { uploadPostImage } from "../../api/ImageUpload";
-import PostsCard from "./PostsCard";
+import PostsCard from "./postsCard";
 import { HiOutlinePencil } from "react-icons/hi";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import FileUploadModal from "./fileUploadModal";
 import ModalComponent from "./modal";
 import { uploadImage as uploadImageAPI } from "../../api/ImageUpload";
 
 export default function ProfileCard({ onEdit, currentUser }) {
   let location = useLocation();
-  const { userName } = useParams();
-  console.log("user", userName);
   const [allStatuses, setAllStatus] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [currentImage, setCurrentImage] = useState({});
   const [progress, setProgress] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
-
-  // const [modalOpen, setModalOpen] = useState(false);
+  const [filemodalOpen, setFileModalOpen] = useState(false);
   const [status, setStatus] = useState("");
-  // const [allStatuses, setAllStatus] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setIsEdit] = useState(false);
   const [postImage, setPostImage] = useState("");
@@ -60,7 +56,6 @@ export default function ProfileCard({ onEdit, currentUser }) {
   function getImage(image) {
     setCurrentImage(image);
   }
-  console.log(currentProfile);
   const uploadImage = () => {
     uploadImageAPI(
       currentImage,
@@ -86,8 +81,8 @@ export default function ProfileCard({ onEdit, currentUser }) {
       <FileUploadModal
         getImage={getImage}
         uploadImage={uploadImage}
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
+        modalOpen={filemodalOpen}
+        setModalOpen={setFileModalOpen}
         currentImage={currentImage}
         progress={progress}
       />
@@ -107,8 +102,16 @@ export default function ProfileCard({ onEdit, currentUser }) {
         <div className="flex justify-between">
           <div className="p-3">
             <img
-              className="object-cover border-2 border-black rounded-full w-28 md:w-48 hover:cursor-pointer"
-              onClick={() => setModalOpen(true)}
+              className="object-cover border-2 border-black rounded-full w-28 h-28 md:w-48 md:h-48 hover:cursor-pointer"
+              onClick={() => {
+                {
+                  currentUser.id === currentProfile.id ? (
+                    setFileModalOpen(true)
+                  ) : (
+                    <></>
+                  );
+                }
+              }}
               src={
                 Object.values(currentProfile).length === 0
                   ? currentUser.imageLink

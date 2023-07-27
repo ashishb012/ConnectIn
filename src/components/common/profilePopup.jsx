@@ -14,7 +14,7 @@ export default function ProfilePopup() {
   return (
     <div className="fixed z-20 h-auto p-5 mt-24 mr-4 border-2 border-gray-900 rounded-lg right-3 w-60 bg-slate-50">
       <p className="font-semibold text-center ">{currentUser?.name}</p>
-      <p className="font-normal">{currentUser?.headline}</p>
+      <p className="font-normal text-center">{currentUser?.headline}</p>
       <Button
         title="View Profile"
         onClick={() =>

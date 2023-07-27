@@ -19,18 +19,10 @@ export default function GoogleSignIn() {
     try {
       const res = await GoogleSignInAPI();
       localStorage.setItem("userEmail", res.user.email);
-      // users.forEach((user) => {
-      //   if (user.id === res.user.uid) {
-      //     return;
-      //   }
-      // });
       const newuser = users.filter((user) => {
-        console.log(user.userID, "uid", res.user.uid);
         return user.userID === res.user.uid;
       });
-      console.log(newuser);
       if (newuser.length === 0) {
-        console.log("new");
         postUserData({
           userID: res.user.uid,
           name: res.user.displayName,
@@ -50,10 +42,11 @@ export default function GoogleSignIn() {
 
   return (
     <div
+      title="Google SignIn"
       onClick={google}
       className="flex flex-row justify-center text-center border border-black rounded-full cursor-pointer hover:bg-blue-700 hover:text-white focus:outline-none focus:shadow-outline"
     >
-      <img src={GoogleLogo} width={50} alt="google" className="p-1" />
+      <img src={GoogleLogo} width={50} alt="google logo" className="p-1" />
       <button className="px-4 py-2 font-bold ">Continue with Google</button>
     </div>
   );

@@ -48,15 +48,24 @@ export default function RegisterComponent() {
 
   return (
     <div className="bg-neutral-100">
-      <img src={ConnectInLogo} className="p-2 w-52" />
+      <img
+        src={ConnectInLogo}
+        alt="ConnectInLogo"
+        title="ConnectInLogo"
+        className="p-2 w-52"
+      />
       <div className="flex items-center justify-center h-screen">
         <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-xl ">
           <h1 className="my-3 text-3xl font-semibold ">Join ConnectIn</h1>
           <div className="my-6">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
+            <label
+              title="Name"
+              className="block mb-2 text-sm font-bold text-gray-700"
+            >
               Name
             </label>
             <input
+              title="Name"
               onChange={(event) =>
                 setCredentials({ ...credentails, name: event.target.value })
               }
@@ -65,10 +74,14 @@ export default function RegisterComponent() {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
+            <label
+              title="Email"
+              className="block mb-2 text-sm font-bold text-gray-700"
+            >
               Email
             </label>
             <input
+              title="Email"
               onChange={(event) =>
                 setCredentials({ ...credentails, email: event.target.value })
               }
@@ -77,10 +90,14 @@ export default function RegisterComponent() {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
+            <label
+              title="Password"
+              className="block mb-2 text-sm font-bold text-gray-700"
+            >
               Password (6+ characters)
             </label>
             <input
+              title="Password"
               onChange={(event) =>
                 setCredentials({ ...credentails, password: event.target.value })
               }
@@ -88,7 +105,7 @@ export default function RegisterComponent() {
               className="w-full p-3 text-gray-700 border rounded focus:outline-gray-900 focus-within:shadow-lg"
             />
           </div>
-          <div className="py-4 text-center">
+          <div title="Agree & Join" className="py-4 text-center">
             <button
               onClick={register}
               className="w-full py-2 font-bold text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:outline-none focus:shadow-outline"
@@ -98,7 +115,7 @@ export default function RegisterComponent() {
           </div>
           <p className="py-4 text-center ">OR</p>
           <GoogleSignIn />
-          <div className="my-4 ">
+          <div title="Already on ConnectIn? Login" className="my-4 ">
             <p className="text-center ">
               Already on ConnectIn? &nbsp;
               <span

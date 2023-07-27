@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, Progress } from "antd";
+import { toast } from "react-toastify";
 
 export default function FileUploadModal({
   modalOpen,
@@ -57,13 +58,15 @@ export default function FileUploadModal({
               // console.log(event.target.files[0].size);
               if (event.target !== undefined) {
                 if (event.target.files[0].size > 2e6) {
-                  alert("File size too big. Compress it & try again.");
+                  toast.error(
+                    "File size too big. Compress it to below 2MB & try again."
+                  );
                 } else {
                   getImage(event.target.files[0]);
                 }
               }
             }}
-            accept=".png, .jpg, .jpeg, .svg"
+            accept=".png, .jpg, .jpeg, .svg, .ico"
           />
         </div>
       </Modal>
