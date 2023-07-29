@@ -8,14 +8,12 @@ export default function PasswordResetComponent() {
   let navigate = useNavigate();
   const [credentails, setCredentials] = useState({});
   const sendResetPassword = async () => {
+    if (!credentails.email) {
+      toast.error("Please enter your email");
+      return;
+    }
     try {
-      if (!credentails.email) {
-        toast.error("Please enter your email");
-        return;
-      }
-      let res = await ResetPasswordAPI(credentails.email).catch((e) => {
-        throw e;
-      });
+      let res = await ResetPasswordAPI(credentails.email);
       if (res.code === "auth/invalid-email") {
         toast.error("invalid email");
         return;
@@ -25,8 +23,10 @@ export default function PasswordResetComponent() {
         return;
       }
     } catch (err) {
-      toast.error("Please Check your Credential");
+      // toast.error("Please Check your Credential");
+      return;
     }
+    toast.success("Email sent successfully");
   };
 
   return (

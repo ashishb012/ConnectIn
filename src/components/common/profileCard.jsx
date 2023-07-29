@@ -76,6 +76,9 @@ export default function ProfileCard({ onEdit, currentUser }) {
     }
   }, []);
 
+  console.log("u", currentUser, "p", currentProfile);
+  console.log("p", currentProfile);
+
   return (
     <>
       <FileUploadModal
@@ -105,11 +108,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
               className="object-cover border-2 border-black rounded-full w-28 h-28 md:w-48 md:h-48 hover:cursor-pointer"
               onClick={() => {
                 {
-                  currentUser.id === currentProfile.id ? (
-                    setFileModalOpen(true)
-                  ) : (
-                    <></>
-                  );
+                  setFileModalOpen(true);
                 }
               }}
               src={
