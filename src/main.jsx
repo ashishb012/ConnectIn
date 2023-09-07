@@ -13,3 +13,21 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ToastContainer />
   </React.StrictMode>
 );
+
+//TODO
+// next.js
+// Dark mode
+// Accessibility
+// Analytics
+// Deployment & hosting (automated)
+// Responsive design
+// Responsive images (Source set)
+// Performance optimization
+// SEO
+// Browser compatability
+// Security
+// ------ Later -------
+// State managment (Redux / recoil)
+// Typescript
+// Testing
+// Learn WebPack
