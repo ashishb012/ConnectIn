@@ -10,10 +10,10 @@ export default function Home({ currentUser }) {
   let navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (res) => {
-      if (!res?.accessToken) {
-        navigate("/");
-      } else {
+      if (res?.accessToken) {
         setLoading(false);
+      } else {
+        navigate("/");
       }
     });
   }, []);

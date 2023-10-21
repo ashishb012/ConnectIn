@@ -17,7 +17,7 @@ export default function RegisterComponent() {
         return;
       }
       const res = await RegisterAPI(credentails.email, credentails.password);
-      console.log(res.code);
+      // console.log(res.code);
       if (res.code === "auth/invalid-email") {
         toast.error("invalid email");
         return;
@@ -33,7 +33,7 @@ export default function RegisterComponent() {
       localStorage.setItem("userEmail", res.user.email);
     } catch (err) {
       console.log(err);
-      toast.error("Cannot Create your Account");
+      toast.error("Cannot Create your Account. Try again later.");
     }
     toast.success("Signed In to ConnectIn!");
     postUserData({

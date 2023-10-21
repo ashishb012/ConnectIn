@@ -19,10 +19,10 @@ export default function GoogleSignIn() {
     try {
       const res = await GoogleSignInAPI();
       localStorage.setItem("userEmail", res.user.email);
-      const newuser = users.filter((user) => {
+      const isNewuser = users.filter((user) => {
         return user.userID === res.user.uid;
       });
-      if (newuser.length === 0) {
+      if (isNewuser.length === 0) {
         postUserData({
           userID: res.user.uid,
           name: res.user.displayName,
