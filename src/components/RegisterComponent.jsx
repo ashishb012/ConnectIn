@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { RegisterAPI } from "../api/AuthAPI";
-import { postUserData } from "../api/FirestoreAPI";
-import ConnectInLogo from "../assets/ConnectInLogo.png";
+import { RegisterAPI } from "/src/api/AuthAPI";
+import { postUserData } from "/src/api/FirestoreAPI";
+import ConnectInLogo from "/src/assets/ConnectInLogo.png";
 import { useNavigate } from "react-router-dom";
-import { getUniqueID } from "../helpers/getUniqueId";
+import { getUniqueID } from "/src/helpers/getUniqueId";
 import { toast } from "react-toastify";
-import GoogleSignIn from "./GoogleComponent";
+import GoogleSignIn from "/src/components/GoogleComponent";
 
 export default function RegisterComponent() {
   let navigate = useNavigate();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getConnections } from "../../api/FirestoreAPI";
+import { getConnections } from "/src/api/FirestoreAPI";
 
 export default function ConnectedUsers({ user, getCurrentUser, currentUser }) {
   const [isConnected, setIsConnected] = useState(false);

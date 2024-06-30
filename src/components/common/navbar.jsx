@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import ConnectInLogo from "../../assets/ConnectInLogo.png";
-import ConnectInIcon from "../../assets/ConnectIn.ico";
-import SearchUsers from "./searchUsers";
+import ConnectInLogo from "/src/assets/ConnectInLogo.png";
+import ConnectInIcon from "/src/assets/ConnectIn.ico";
+import SearchUsers from "/src/components/common/searchUsers";
 import {
   AiOutlineHome,
   AiOutlineUserSwitch,
   AiOutlineSearch,
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { getAllUsers } from "../../api/FirestoreAPI";
-import ProfilePopup from "./profilePopup";
+import { getAllUsers } from "/src/api/FirestoreAPI";
+import ProfilePopup from "/src/components/common/profilePopup";
 
 export default function Navbar({ currentUser }) {
   const [popupVisible, setPopupVisible] = useState(false);

@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../Pages/Login";
-import Register from "../Pages/Register";
-import HomeLayout from "../layouts/HomeLayout";
-import ProfileLayout from "../layouts/ProfileLayout";
-import ConnectionLayout from "../layouts/ConnectionLayout";
-import PasswordReset from "../Pages/PasswordReset";
+import Login from "/src/Pages/Login";
+import Register from "/src/Pages/Register";
+import HomeLayout from "/src/layouts/HomeLayout";
+import ProfileLayout from "/src/layouts/ProfileLayout";
+import ConnectionLayout from "/src/layouts/ConnectionLayout";
+import PasswordReset from "/src/Pages/PasswordReset";
 
 export const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import { firestore } from "../firebaseConfig";
+import { firestore } from "/src/firebaseConfig";
 import {
   addDoc,
   collection,

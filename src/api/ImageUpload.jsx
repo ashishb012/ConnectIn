@@ -1,6 +1,6 @@
-import { storage } from "../firebaseConfig";
+import { storage } from "/src/firebaseConfig";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { editProfile } from "./FirestoreAPI";
+import { editProfile } from "/src/api/FirestoreAPI";
 
 export const uploadImage = (
   file,

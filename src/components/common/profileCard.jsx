@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from "react";
-import { getSingleStatus, getSingleUser } from "../../api/FirestoreAPI";
-import { postStatus, updatePost } from "../../api/FirestoreAPI";
-import { uploadPostImage } from "../../api/ImageUpload";
-import PostsCard from "./postsCard";
+import { getSingleStatus, getSingleUser } from "/src/api/FirestoreAPI";
+import { postStatus, updatePost } from "/src/api/FirestoreAPI";
+import { uploadPostImage } from "/src/api/ImageUpload";
+import PostsCard from "/src/components/common/postsCard";
 import { HiOutlinePencil } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
-import FileUploadModal from "./fileUploadModal";
-import ModalComponent from "./modal";
-import { uploadImage as uploadImageAPI } from "../../api/ImageUpload";
+import FileUploadModal from "/src/components/common/fileUploadModal";
+import ModalComponent from "/src/components/common/modal";
+import { uploadImage as uploadImageAPI } from "/src/api/ImageUpload";
 
 export default function ProfileCard({ onEdit, currentUser }) {
   let location = useLocation();

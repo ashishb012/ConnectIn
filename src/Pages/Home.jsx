@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import HomeComponent from "../components/HomeComponent";
+import HomeComponent from "/src/components/HomeComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebaseConfig";
-import Loader from "../components/common/Loader";
+import { auth } from "/src/firebaseConfig";
+import Loader from "/src/components/common/Loader";
 
 export default function Home({ currentUser }) {
   const [loading, setLoading] = useState(true);
@@ -18,4 +18,5 @@ export default function Home({ currentUser }) {
     });
   }, []);
   return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
+  // return <HomeComponent currentUser={currentUser} />;
 }

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
-import Home from "../Pages/Home";
-import { getCurrentUser } from "../api/FirestoreAPI";
-import Navbar from "../components/common/navbar";
+import Home from "/src/Pages/Home";
+import { getCurrentUser } from "/src/api/FirestoreAPI";
+import Navbar from "/src/components/common/navbar";
 
 export default function HomeLayout() {
   const [currentUser, setCurrentUser] = useState({});

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { LoginAPI } from "../api/AuthAPI";
-import ConnectInLogo from "../assets/ConnectInLogo.png";
+import { LoginAPI } from "/src/api/AuthAPI";
+import ConnectInLogo from "/src/assets/ConnectInLogo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import GoogleSignIn from "./GoogleComponent";
+import GoogleSignIn from "/src/components/GoogleComponent";
 
 export default function LoginComponent() {
   let navigate = useNavigate();

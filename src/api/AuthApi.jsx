@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebaseConfig";
+import { auth } from "/src/firebaseConfig";
 
 export const LoginAPI = async (email, password) => {
   try {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { GoogleSignInAPI } from "../api/AuthAPI";
-import GoogleLogo from "../assets/googleLogo.png";
+import { GoogleSignInAPI } from "/src/api/AuthAPI";
+import GoogleLogo from "/src/assets/googleLogo.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { postUserData } from "../api/FirestoreAPI";
-import { getAllUsers } from "../api/FirestoreAPI";
+import { postUserData } from "/src/api/FirestoreAPI";
+import { getAllUsers } from "/src/api/FirestoreAPI";
 
 export default function GoogleSignIn() {
   const navigate = useNavigate();
